@@ -1,0 +1,17 @@
+{
+  "name": "ai-content-generator",
+  "version": "1.0.0",
+  "description": "AI-Powered Content Generator for Blogs and Social Media (Final Year Project)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.106.0",
+    "@google/generative-ai": "^0.21.0",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.2"
+  }
+}

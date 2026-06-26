@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Content Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════ PAGE 1: HOME ═══════════════════ -->
+  <div id="homePage" class="page active">
+
+    <header class="home-header">
+      <div class="logo">✦ ContentAI</div>
+      <div class="powered-badge">Powered by Claude AI</div>
+    </header>
+
+    <section class="hero">
+      <h1 class="hero-title">Write less.<br/>Publish more.</h1>
+      <p class="hero-sub">
+        Choose your platform below. Our AI — powered by Anthropic's Claude —
+        will craft perfectly structured content tailored to your topic, tone, and audience.
+      </p>
+    </section>
+
+    <section class="platforms-section">
+      <p class="section-label">Select a platform to get started</p>
+
+      <div class="platform-cards">
+
+        <!-- Blog Post -->
+        <div class="platform-card" id="card-blog" onclick="goToGenerator('Blog post')">
+          <div class="card-icon blog-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 20h9"/>
+              <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title">Blog Post</h2>
+            <p class="card-desc">Long-form articles with a headline, structured sections, and a compelling call-to-action. Perfect for websites and SEO.</p>
+            <ul class="card-features">
+              <li>✓ Headline + introduction</li>
+              <li>✓ 3–4 structured sections</li>
+              <li>✓ CTA conclusion</li>
+            </ul>
+            <div class="card-length">800 – 1200 words</div>
+          </div>
+          <div class="card-go">Get started →</div>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="platform-card" id="card-linkedin" onclick="goToGenerator('LinkedIn')">
+          <div class="card-icon linkedin-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title">LinkedIn</h2>
+            <p class="card-desc">Professional posts with a strong opening hook and thought-leadership framing to drive engagement on LinkedIn.</p>
+            <ul class="card-features">
+              <li>✓ Attention-grabbing hook</li>
+              <li>✓ Professional tone</li>
+              <li>✓ Engagement CTA</li>
+            </ul>
+            <div class="card-length">300 – 600 words</div>
+          </div>
+          <div class="card-go">Get started →</div>
+        </div>
+
+        <!-- Twitter/X -->
+        <div class="platform-card" id="card-twitter" onclick="goToGenerator('Twitter/X')">
+          <div class="card-icon twitter-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title">Twitter / X</h2>
+            <p class="card-desc">Punchy numbered tweet threads crafted to grab attention, spark conversation, and stay under 280 characters each.</p>
+            <ul class="card-features">
+              <li>✓ 4–6 numbered tweets</li>
+              <li>✓ Under 280 chars each</li>
+              <li>✓ Strong opening tweet</li>
+            </ul>
+            <div class="card-length">Thread format</div>
+          </div>
+          <div class="card-go">Get started →</div>
+        </div>
+
+        <!-- Instagram -->
+        <div class="platform-card" id="card-instagram" onclick="goToGenerator('Instagram')">
+          <div class="card-icon instagram-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title">Instagram</h2>
+            <p class="card-desc">Visually evocative captions with perfectly placed emojis and strategic hashtags to maximise reach and engagement.</p>
+            <ul class="card-features">
+              <li>✓ Engaging caption</li>
+              <li>✓ Natural emojis</li>
+              <li>✓ 6–10 hashtags</li>
+            </ul>
+            <div class="card-length">Short & punchy</div>
+          </div>
+          <div class="card-go">Get started →</div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="home-footer">
+      Powered by Anthropic Claude API &nbsp;·&nbsp; AI-Powered Content Generator &nbsp;·&nbsp; Final Year Project
+    </footer>
+
+  </div>
+
+  <!-- ═══════════════════ PAGE 2: GENERATOR ═══════════════════ -->
+  <div id="generatorPage" class="page">
+
+    <div class="gen-topbar">
+      <button class="back-btn" onclick="goHome()">← Back to platforms</button>
+      <div class="gen-badge" id="genBadge">Blog Post</div>
+      <div class="logo-sm">✦ ContentAI</div>
+    </div>
+
+    <main class="gen-main">
+
+      <div class="gen-heading">
+        <h2 id="genTitle">Blog Post Generator</h2>
+        <p id="genSubtitle">Fill in the details below and Claude AI will write your content.</p>
+      </div>
+
+      <div class="gen-form">
+
+        <div class="field full">
+          <label for="topic">Your topic or brief <span class="req">*</span></label>
+          <textarea id="topic" rows="3" placeholder="e.g. 5 habits that helped me grow my business in Nigeria..."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="audience">Target audience</label>
+          <input type="text" id="audience" placeholder="e.g. young entrepreneurs" />
+        </div>
+
+        <div class="field">
+          <label for="length">Content length</label>
+          <select id="length">
+            <option value="short">Short (under 100 words)</option>
+            <option value="medium" selected>Medium (300–600 words)</option>
+            <option value="long">Long (800–1200 words)</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label>Tone of voice</label>
+          <div class="tone-grid">
+            <button class="tone-btn active" data-tone="Professional">Professional</button>
+            <button class="tone-btn" data-tone="Casual & friendly">Casual</button>
+            <button class="tone-btn" data-tone="Witty & bold">Witty</button>
+            <button class="tone-btn" data-tone="Educational">Educational</button>
+            <button class="tone-btn" data-tone="Inspirational">Inspirational</button>
+            <button class="tone-btn" data-tone="Conversational">Conversational</button>
+          </div>
+        </div>
+
+        <div class="field full">
+          <button id="generateBtn" class="gen-btn" onclick="generateContent()">
+            ✦ Generate with Claude AI
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Output -->
+      <div id="outputBox" class="output-box hidden">
+        <div class="output-top">
+          <span id="outputLabel" class="output-label">Output</span>
+          <div class="output-actions">
+            <button onclick="copyContent(this)">Copy</button>
+            <button onclick="generateContent()">Regenerate</button>
+          </div>
+        </div>
+        <div id="outputBody" class="output-body"></div>
+        <div id="outputFooter" class="output-footer hidden">
+          <span id="wordCount"></span>
+          <span id="modelBadge" class="model-badge">Claude AI</span>
+        </div>
+      </div>
+
+      <p id="errorMsg" class="error-msg hidden"></p>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
